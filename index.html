@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- don't forget the jquery CDN! -->
+    <!-- include jquery CDN before our custom javascript so that it's ready to go! -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors Game</h1>
+    <p>Press "r", "p", or "s" to do rock paper or scissors</p>
+    <!-- where we'll keep track of wins and losses -->
+    <p>Wins:</p>
+    <p>Losses:</p>
+
+    <script>
+      //we want to be able to type r, p , or s and play with the computer
+      //Be able to calculate wins and losses
+      //alert to the user if they won or lost the round
+
+      //step one: get user input
+      // give some response based on user input
+      //switch statement? console.log? query selector?
+      //keyboard events?
+      //once the document is ready execute whatever is inside
+      //we want to put pur code in here so that the document can fully load before we do anythiung (avoid bugs)
+      //$ = jQuery
+      $(document).ready(function() {
+        //attack the keypress event listener to the body of the document so no matter where the user is we have access to their key presses
+        $("body").keypress(function(event) {
+          //figure out how to see the key the user is typing
+          //   console.log(event)
+          //event is an object we can traverse (fancy word for going into)
+          console.log("you pressed the letter", event.key);
+          //we can either put the if statement in here if we wanted because we have access to the event
+          //or call new function and pass event.key
+          //call the checkKey function
+          checkKey(event.key);
+        });
+
+        //initialize a function
+        function checkKey(letter) {
+          console.log(letter, "yooooo");
+          //letter = event.key from line 37
+          //if they press something wrong then alert them to press r, p. or s
+          //|| is "or" in javascript
+          //&& is "and"
+          //== is equal to (0 == "0") => true
+          //=== stricter than double equal,it checks for type (0 === "0") => false
+          //>= greater than or equal to
+          //<= less than or equal to
+          if (letter != "r" || letter != "p" || letter != "s") {
+            alert("Please press the right letter");
+          } else {
+            playGame(letter);
+          }
+        }
+      });
+      //initialize a function where we can check if we won against the computer
+      function playGame(letter) {}
+
+      //extra notes:
+      //% is called the modulus uperator, checks for the remainder
+      //difference between function var and const
+      //what does the function key word do? prompts an event (javascript says I will do something)
+      //what is var? holds some kind of data
+      //ex: var num = 1
+      // var string = "dog"
+      //what is const? holds some kind of data, difference: we generally don't want to change this!
+      //devs like to be articulate so if they use const they mean do not change it
+
+      //difference between how you might create a function
+      myFunction(); //not work
+      myFunc(); //works
+      //thus function only exists on this line and below
+      var myFunction = function() {
+        console.log("hello");
+      };
+      
+      //available everywhere
+      function myFunc() {
+        console.log("hello");
+      }
+      myFunction(); //work
+      myFunc(); //works
+    </script>
+  </body>
+</html>
